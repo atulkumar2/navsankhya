@@ -1,0 +1,73 @@
+{
+  "reviewedAt": "2026-11-07",
+  "profileUrl": "https://github.com/atulkumar2",
+  "projects": [
+    {
+      "name": "Investor Paradise",
+      "repository": "investor_paradise",
+      "category": "AI AGENTS & DATA",
+      "description": "A collaborative Python project whose README describes a multi-agent workflow combining NSE market analysis with PDF and web news research. It uses Google ADK and Gemini, with documented session management and evaluation workflows.",
+      "note": "Educational and informational research project; its outputs are not financial advice.",
+      "tags": ["Python", "Google ADK", "Gemini"],
+      "archived": false,
+      "url": "https://github.com/atulkumar2/investor_paradise",
+      "sourceUrl": "https://github.com/atulkumar2/investor_paradise/blob/main/README.md"
+    },
+    {
+      "name": "Nirog Yoga",
+      "repository": "nirogyoga",
+      "category": "AI-ASSISTED WEB DEVELOPMENT",
+      "description": "My AI-assisted website work for Nirog Yoga. The repository is a JavaScript and Next.js project, and the live website brings together yoga programs, instructor information, and learning resources.",
+      "note": "Explore both the source repository and the live website.",
+      "tags": ["JavaScript", "Next.js", "Website"],
+      "archived": false,
+      "url": "https://github.com/atulkumar2/nirogyoga",
+      "sourceUrl": "https://github.com/atulkumar2/nirogyoga/blob/main/README.md",
+      "liveUrl": "https://www.nirogyoga.in/"
+    },
+    {
+      "name": "Distributed Systems",
+      "repository": "distributedsystems",
+      "category": "JAVA & EVENT STREAMING",
+      "description": "Four vehicle-telemetry learning projects progressing from Java Kafka producers and consumers to Spring Boot applications, multiple consumer groups, PostgreSQL storage, retries, and dead-letter queue handling.",
+      "note": "A staged learning repository with shared Docker infrastructure.",
+      "tags": ["Java", "Kafka", "Spring Boot", "Docker"],
+      "archived": false,
+      "url": "https://github.com/atulkumar2/distributedsystems",
+      "sourceUrl": "https://github.com/atulkumar2/distributedsystems/blob/main/README.md"
+    },
+    {
+      "name": "NSE Analysis",
+      "repository": "nse_analysis",
+      "category": "DATA EXPLORATION",
+      "description": "A Jupyter notebook for exploring NSE equity, deliverable, and derivatives reports. Its documented workflow includes symbol and date selection, interactive charts, and CSV or HTML exports.",
+      "note": "Notebook-based analysis using local report data.",
+      "tags": ["Jupyter", "pandas", "Plotly"],
+      "archived": false,
+      "url": "https://github.com/atulkumar2/nse_analysis",
+      "sourceUrl": "https://github.com/atulkumar2/nse_analysis/blob/main/README.md"
+    },
+    {
+      "name": "Cypress with Allure",
+      "repository": "cypress-basic-allure",
+      "category": "TEST AUTOMATION",
+      "description": "A basic Cypress project structure with Allure report generation. The README explicitly describes it as a framework starter rather than a useful test suite.",
+      "note": "Archived on GitHub at the time of review; useful as a historical setup example.",
+      "tags": ["JavaScript", "Cypress", "Allure"],
+      "archived": true,
+      "url": "https://github.com/atulkumar2/cypress-basic-allure",
+      "sourceUrl": "https://github.com/atulkumar2/cypress-basic-allure/blob/main/README.md"
+    },
+    {
+      "name": "Python Utilities",
+      "repository": "python_utilities",
+      "category": "REUSABLE HELPERS",
+      "description": "A collection described in its README as utility functions for Python. GitHub identifies Jupyter Notebook as its primary language, connecting reusable helpers with notebook-based exploration.",
+      "note": "The brief README leaves the individual helpers to be explored in the repository.",
+      "tags": ["Python", "Jupyter", "Utilities"],
+      "archived": false,
+      "url": "https://github.com/atulkumar2/python_utilities",
+      "sourceUrl": "https://github.com/atulkumar2/python_utilities/blob/main/README.md"
+    }
+  ]
+}

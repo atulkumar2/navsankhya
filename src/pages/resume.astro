@@ -1,0 +1,12 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+const resume = await getEntry('pages', 'resume');
+if (!resume) throw new Error('Resume content is missing');
+const { Content, headings } = await render(resume);
+---
+<Base title="Resume · Atul Kumar" description={resume.data.description}>
+  <section class="wrap resume-hero"><div><p class="eyebrow">THE PERSON BEHIND THE NOTES</p><h1>Atul Kumar</h1><p class="resume-subtitle">Automation, GenAI & DevOps</p><p class="resume-description">Building software, improving systems,<br />and exploring what comes next.</p><div class="profile-links"><a href="https://www.linkedin.com/in/atulkumar88/">LinkedIn ↗</a><a href="https://x.com/_AtulKumar2_">X ↗</a><a href="https://github.com/atulkumar2">GitHub ↗</a></div></div><div class="resume-monogram" aria-hidden="true"><span>AK</span><span class="monogram-caption">ENGINEER. EXPLORER. LEARNER.</span></div></section>
+  <section class="wrap resume-layout"><aside class="resume-sidebar"><p class="eyebrow">ON THIS PAGE</p><nav aria-label="Resume sections">{headings.filter(heading => heading.depth === 2).map(heading => <a href={`#${heading.slug}`}>{heading.text}</a>)}</nav><button class="print-button" id="print-resume">Print resume <span aria-hidden="true">↗</span></button><p class="resume-note">Professional highlights from my supplied resume. Connect on LinkedIn for further details.</p></aside><div class="prose resume-prose"><Content /></div></section>
+  <script>document.querySelector('#print-resume')?.addEventListener('click', () => window.print());</script>
+</Base>

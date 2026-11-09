@@ -1,0 +1,13 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { publishedArticles, formatDate } from '../../lib/content';
+export async function getStaticPaths() {
+  return (await publishedArticles()).map(article => { const [section, slug] = article.id.split('/'); return { params: { section, slug }, props: { article } }; });
+}
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+<Base title={article.data.title} description={article.data.description}>
+  <article class="wrap reading-page"><a class="back-link" href={`/${Astro.params.section}/`}>← Back to {Astro.params.section === 'it' ? 'IT' : 'Non-IT'} Blog</a><p class="eyebrow">{article.data.type}</p><h1>{article.data.title}</h1><p class="article-description">{article.data.description}</p><div class="article-meta"><time datetime={article.data.publishedAt}>{formatDate(article.data.publishedAt)}</time>{article.data.updatedAt && <span>Updated {formatDate(article.data.updatedAt)}</span>}</div><div class="tags">{article.data.tags.map(tag => <span>{tag}</span>)}</div>{article.data.cover && <img class="cover-image" src={article.data.cover} alt={article.data.coverAlt ?? ''} />}<div class="prose"><Content /></div></article>
+</Base>

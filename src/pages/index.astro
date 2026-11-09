@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import ArticleList from '../components/ArticleList.astro';
+import { publishedArticles } from '../lib/content';
+const articles = (await publishedArticles()).slice(0, 4);
+---
+<Base title="Home" description="Atul Kumar's personal space for knowledge, technology, and hands-on experiments.">
+  <section class="hero wrap">
+    <div class="hero-copy"><p class="eyebrow"><span class="little-line"></span> THE PERSONAL NOTEBOOK OF ATUL KUMAR</p>
+      <h1>Always curious.<br />Still <em>exploring.</em></h1>
+      <p class="hero-description">Notes on technology, ideas beyond it, and what happens when curiosity turns into an experiment.</p>
+      <div class="hero-actions"><a class="button" href="#explore">Explore the notebook <span aria-hidden="true">↘</span></a><a class="text-link" href="/resume/">A little about me <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="notebook-art" aria-hidden="true"><div class="art-grid"></div><span class="art-label">OBSERVE / QUESTION / EXPERIMENT</span><svg viewBox="0 0 400 320"><g fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="200" cy="156" rx="125" ry="49" transform="rotate(-35 200 156)"/><ellipse cx="200" cy="156" rx="125" ry="49" transform="rotate(35 200 156)"/><ellipse cx="200" cy="156" rx="125" ry="49" transform="rotate(90 200 156)"/><circle cx="200" cy="156" r="13" fill="currentColor"/><circle cx="292" cy="95" r="6" fill="#c17c47" stroke="none"/><circle cx="120" cy="215" r="5" fill="#c17c47" stroke="none"/></g></svg><span class="art-foot">An idea is a good place to start.</span></div>
+  </section>
+  <section id="explore" class="wrap section-block"><div class="section-heading"><div><p class="eyebrow">FOLLOW YOUR CURIOSITY</p><h2>A few paths to explore</h2></div><span class="section-note">Different subjects. The same curiosity.</span></div>
+    <div class="path-grid"><a class="path-card" href="/it/"><span class="path-number">01 / TECHNOLOGY</span><span class="path-symbol" aria-hidden="true">&lt;/&gt;</span><h3>Inside technology <span>↗</span></h3><p>Software, systems, and experiments. Understanding how things work by getting hands-on.</p><span class="card-link">Visit the IT blog</span></a><a class="path-card warm" href="/non-it/"><span class="path-number">02 / BEYOND TECHNOLOGY</span><span class="path-symbol" aria-hidden="true">✳</span><h3>Outside the usual <span>↗</span></h3><p>A place for knowledge, observations, and explorations that don't fit inside a technical box.</p><span class="card-link">Visit the non-IT blog</span></a></div>
+  </section>
+  <section class="wrap section-block"><div class="section-heading"><div><p class="eyebrow">FROM THE NOTEBOOK</p><h2>Latest writing</h2></div></div>
+    {articles.length ? <ArticleList articles={articles} /> : <div class="empty-state"><span class="empty-icon" aria-hidden="true">↳</span><div><h3>The notebook is just opening.</h3><p>Articles and experiment notes will appear here as they are published. In the meantime, get to know the person behind the notes.</p><a class="text-link" href="/resume/">Meet Atul <span aria-hidden="true">↗</span></a></div></div>}
+  </section>
+  <section class="wrap about-strip"><div><p class="eyebrow">BEHIND THE NOTEBOOK</p><h2>Hi, I'm Atul.</h2><p>This is my space to share what I learn and what I try.<br />You can explore my professional journey or find me elsewhere.</p></div><div class="strip-links"><a href="/resume/">My resume <span>↗</span></a><a href="/links/">Around the web <span>↗</span></a></div></section>
+</Base>

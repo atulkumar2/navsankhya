@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Find me elsewhere",
+    "items": [
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/atulkumar88/", "description": "Professional background and connections." },
+      { "label": "X", "url": "https://x.com/_AtulKumar2_", "description": "Follow @_AtulKumar2_." },
+      { "label": "GitHub", "url": "https://github.com/atulkumar2", "description": "My code, repositories, and experiments." }
+    ]
+  },
+  {
+    "title": "My work using AI",
+    "items": [
+      { "label": "Nirog Yoga", "url": "https://www.nirogyoga.in/", "description": "A website I built using AI-assisted development." }
+    ]
+  }
+]

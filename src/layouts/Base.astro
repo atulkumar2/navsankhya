@@ -1,0 +1,57 @@
+---
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/dm-sans';
+import '../styles/global.css';
+import '../styles/refresh.css';
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const links = [['/', 'Home'], ['/it/', 'IT Blog'], ['/non-it/', 'Non-IT Blog'], ['/github/', 'GitHub'], ['/resume/', 'Resume'], ['/links/', 'Links']];
+const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === 'Home' ? 'Navsankhya — Notes, knowledge & experiments' : `${title} — Navsankhya`}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={`${title} — Navsankhya`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    {import.meta.env.VERCEL_ENV === 'preview' && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Navsankhya" href="/rss.xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="/" aria-label="Navsankhya home"><span class="brand-icon" aria-hidden="true">n</span>navsankhya</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menu <span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Main navigation">
+        {links.map(([href, label]) => <a href={href} aria-current={(href === '/' ? path === href : path.startsWith(href)) ? 'page' : undefined}>{label}</a>)}
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer wrap">
+      <div><a class="footer-brand" href="/">Navsankhya</a><p>A space to learn, try, and share.</p></div>
+      <div class="footer-right"><a href="/rss.xml">RSS feed ↗</a><span>© {new Date().getFullYear()} Atul Kumar</span></div>
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector<HTMLElement>('#primary-nav');
+      toggle?.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(expanded));
+        nav?.classList.toggle('is-open', expanded);
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+          toggle.setAttribute('aria-expanded', 'false'); nav?.classList.remove('is-open'); toggle.focus();
+        }
+      });
+    </script>
+  </body>
+</html>

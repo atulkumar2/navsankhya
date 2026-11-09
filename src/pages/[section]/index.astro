@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import { publishedArticles } from '../../lib/content';
+export function getStaticPaths() { return [{ params: { section: 'it' } }, { params: { section: 'non-it' } }]; }
+const isIT = Astro.params.section === 'it';
+const articles = (await publishedArticles()).filter(article => article.id.startsWith(`${Astro.params.section}/`));
+const title = isIT ? 'Inside technology' : 'Outside the usual';
+---
+<Base title={isIT ? 'IT Blog' : 'Non-IT Blog'} description={isIT ? 'Articles and hands-on experiments in software and technology.' : 'Knowledge, observations, and experiments beyond technology.'}>
+  <section class="wrap page-intro"><p class="eyebrow">{isIT ? '01 / IT BLOG' : '02 / NON-IT BLOG'}</p><h1>{title}</h1><p>{isIT ? 'Working notes on software, systems, and the lessons that come from trying things out.' : 'A notebook for ideas, observations, and explorations beyond the world of IT.'}</p></section>
+  <section class="wrap section-block blog-content"><div class="section-heading"><h2>All writing</h2><span class="section-note">{articles.length} published {articles.length === 1 ? 'entry' : 'entries'}</span></div>{articles.length ? <ArticleList articles={articles} /> : <div class="empty-state"><span class="empty-icon" aria-hidden="true">✎</span><div><h3>A fresh page.</h3><p>No articles published in this section yet. New writing and experiments will appear here.</p><a class="text-link" href={isIT ? '/non-it/' : '/it/'}>Explore the other notebook ↗</a></div></div>}</section>
+</Base>

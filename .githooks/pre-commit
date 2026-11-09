@@ -1,0 +1,10 @@
+#!/bin/sh
+# Fail closed if Python or the scanner is unavailable.
+if command -v python >/dev/null 2>&1; then
+    exec python scripts/check_privacy.py
+elif command -v python3 >/dev/null 2>&1; then
+    exec python3 scripts/check_privacy.py
+else
+    echo 'Privacy check requires Python 3. Install it before committing.' >&2
+    exit 1
+fi

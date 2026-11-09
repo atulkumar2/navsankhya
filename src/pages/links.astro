@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import groups from '../content/links.json';
+for (const group of groups) for (const item of group.items) {
+  if (!['https:', 'http:'].includes(new URL(item.url).protocol)) throw new Error('Invalid external link');
+}
+---
+<Base title="Links" description="Find Atul Kumar on LinkedIn, X, and GitHub, and explore his work using AI.">
+  <section class="wrap page-intro"><p class="eyebrow">ELSEWHERE ON THE WEB</p><h1>Let's stay connected<span class="accent">.</span></h1><p>A few other places to find me, follow along, and keep the conversation going.</p></section>
+  <section class="wrap section-block links-section"><p><a class="text-link" href="/github/">Explore my GitHub project summary ↗</a></p>{groups.map(group => <div class="link-group"><h2>{group.title}</h2><div class="external-links">{group.items.map(item => <a class="external-link" href={item.url}><span class="social-mark" aria-hidden="true">{item.label === 'LinkedIn' ? 'in' : item.label === 'X' ? '𝕏' : '↗'}</span><div><h3>{item.label}</h3><p>{item.description}</p></div><span class="external-arrow" aria-hidden="true">↗</span></a>)}</div></div>)}</section>
+</Base>

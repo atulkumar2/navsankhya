@@ -1,0 +1,25 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+.aws/
+.ssh/
+
+# Material that must stay outside the published repository
+private/
+confidential/
+*.local
+*.log
+
+# Generated application files
+node_modules/
+dist/
+.astro/
+.vercel/
+__pycache__/
